@@ -1,0 +1,4 @@
+---
+applications:
+- name: nodeface
+  command: node ./bin/www
