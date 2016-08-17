@@ -1,11 +1,24 @@
 var mysql = require('mysql');
 var DB_NAME = "nodeface";
-var pool = mysql.createPool({
+
+
+if(process.env.VCAP_SERVICES){
+    var mysqlVariables = process.env.VCAP_SERVICES.p-mysql;
+    var pool = mysql.createPool({
+    host: mysqlVariables.credentials.hostname,
+    user: mysqlVariables.credentials.username,
+    password: mysqlVariables.credentials.password,
+    database: DB_NAME
+}
+else{
+    var pool = mysql.createPool({
     host: 'localhost',
     user: 'test',
     password: '1234',
     database: DB_NAME
 });
+};
+
 
 /*var connection = mysql.createConnection({
     host     : 'localhost',
@@ -34,6 +47,7 @@ pool.getConnection(function (err, connection) {
             console.log("USE Error: " + err.message);
             return;
         }
+        connection.release();
         console.log('USE succeed');
     });
 
