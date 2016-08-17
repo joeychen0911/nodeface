@@ -3,7 +3,12 @@ var mysql = require('mysql');
 
 //Update mysql connection based on running environment
 if (process.env.VCAP_SERVICES) {
-    var mysqlVariables = process.env.VCAP_SERVICES.cleardb;
+    var environment = JSON.parse(process.env.VCAP_SERVICES);
+    
+    console.log('output environment:' + environment);
+    console.log('output environment.cleardb:' + environment.cleardb);
+    console.log('output environment.cleardb[0]:' + environment.cleardb[0]);
+    var mysqlVariables = environment.cleardb[0];
     var DB_NAME = mysqlVariables.credentials.name;
     var pool = mysql.createPool({
         host: mysqlVariables.credentials.hostname,
