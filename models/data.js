@@ -1,22 +1,22 @@
 var mysql = require('mysql');
 var DB_NAME = "nodeface";
 
-
-if(process.env.VCAP_SERVICES){
-    var mysqlVariables = process.env.VCAP_SERVICES.p-mysql;
+if (process.env.VCAP_SERVICES) {
+    var mysqlVariables = process.env.VCAP_SERVICES.p - mysql;
     var pool = mysql.createPool({
-    host: mysqlVariables.credentials.hostname,
-    user: mysqlVariables.credentials.username,
-    password: mysqlVariables.credentials.password,
-    database: DB_NAME
+        host: mysqlVariables.credentials.hostname,
+        user: mysqlVariables.credentials.username,
+        password: mysqlVariables.credentials.password,
+        database: DB_NAME
+    })
 }
-else{
+else {
     var pool = mysql.createPool({
-    host: 'localhost',
-    user: 'test',
-    password: '1234',
-    database: DB_NAME
-});
+        host: 'localhost',
+        user: 'test',
+        password: '1234',
+        database: DB_NAME
+    });
 };
 
 
