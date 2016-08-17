@@ -1,11 +1,10 @@
 var mysql = require('mysql');
 
 
-
 //Update mysql connection based on running environment
 if (process.env.VCAP_SERVICES) {
-    var DB_NAME = mysqlVariables.credentials.name;
     var mysqlVariables = process.env.VCAP_SERVICES.cleardb;
+    var DB_NAME = mysqlVariables.credentials.name;
     var pool = mysql.createPool({
         host: mysqlVariables.credentials.hostname,
         user: mysqlVariables.credentials.username,
