@@ -1,8 +1,11 @@
 var mysql = require('mysql');
-var DB_NAME = "nodeface";
 
+
+
+//Update mysql connection based on running environment
 if (process.env.VCAP_SERVICES) {
-    var mysqlVariables = process.env.VCAP_SERVICES.p - mysql;
+    var DB_NAME = mysqlVariables.credentials.name;
+    var mysqlVariables = process.env.VCAP_SERVICES.cleardb;
     var pool = mysql.createPool({
         host: mysqlVariables.credentials.hostname,
         user: mysqlVariables.credentials.username,
@@ -11,6 +14,7 @@ if (process.env.VCAP_SERVICES) {
     })
 }
 else {
+    var DB_NAME = "nodeface";
     var pool = mysql.createPool({
         host: 'localhost',
         user: 'test',
