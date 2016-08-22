@@ -4,27 +4,13 @@ function loadingStart(tipsContent, errorTips, iconUrl, jump) {
     if (tipsContent != null) {
         $("#loadingSection .body p").html(tipsContent);
         if (errorTips === true) {
-            if (iconUrl) {
-                $("#loadingSection .body img")[0].src = iconUrl;
-            } else {
-                $("#loadingSection .body img")[0].src = "http://res.tu.qq.com/assets/opnewyear2016_img/icon-loading.png";
-            }
             $("#loadingSection .body img")[0].className = "";
             $("#loadingSection .body div").css("display", "");
-            if (jump) {
-                $("#loadingSection .body div").one(isSupportTouch ? "touchend" : "click", jump);
-            } else {
-                $("#loadingSection .body div").one(isSupportTouch ? "touchend" : "click", jumpToIndex);
-            }
         } else {
             $("#loadingSection .body div").css("display", "none");
-            $("#loadingSection .body img")[0].src = "http://res.tu.qq.com/assets/opnewyear2016_img/icon-loading.png";
-            $("#loadingSection .body img")[0].className = "animate";
         }
     } else {
         $("#loadingSection .body div").css("display", "none");
-        $("#loadingSection .body img")[0].src = "http://res.tu.qq.com/assets/opnewyear2016_img/icon-loading.png";
-        $("#loadingSection .body img")[0].className = "animate";
         $("#loadingSection .body p").text("加载中请稍候");
     }
     $("#loadingSection").css("display", "");
@@ -195,6 +181,8 @@ function jumpToMiddlePage(dataURL) {
 }
 */
 function cropUploadWithData(imgData, fileType) {
+    loadingStart("正在给您挑车<br />请稍等");
+
     var text = window.atob(imgData);
     var buffer = new Uint8Array(text.length);
     //var pecent = 0, loop = null;
@@ -212,6 +200,9 @@ function cropUploadWithData(imgData, fileType) {
             var result = JSON.parse(xhr.responseText);
             resultDisplay(result);
             //var jsonData = JSON.parse(result);
+        }
+        else {
+            loadingStart("店小二家的服务器扑街啦！<br />请客官稍后再试", true);
         }
     };
     /*xhr.onreadystatechange = function() {
@@ -324,6 +315,7 @@ function cropStop(evt) {
 
 function resultDisplay(resultJSON) {
     if (resultJSON.serviceStat == 0) {
+        loadingStop();
         $("#middleSection").css("display", "none");
         $("#resultSection .retry-btn").css("display", "");
         $("#resultSection .result-title").html("小二家的服务器扑街啦~请客官稍后再来噢！");
@@ -332,6 +324,7 @@ function resultDisplay(resultJSON) {
     }
     else {
         if (resultJSON.faceExist == 1) {
+            loadingStop();
             $("#middleSection").css("display", "none");
             $("#resultSection .result-bg").css("display", "");
             $("#resultSection .photo-result").attr("src", resultJSON.imgUrl);
@@ -340,6 +333,7 @@ function resultDisplay(resultJSON) {
             $("#resultSection .result-content").html(resultJSON.webContent);
             $("#resultSection").css("display", "");
         } else {
+            loadingStop();
             $("#middleSection").css("display", "none");
             $("#resultSection .retry-btn").css("display", "");
             $("#resultSection .result-title").html("检测失败，请重新上传一张美照试试~");

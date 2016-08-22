@@ -26,13 +26,10 @@ body {
     top:50%;
 }
 .loading-section .body img {
-    width:52px;
+    width:100px;
     margin-top:20px;
 }
-.loading-section .body img.animate {
-    animation: loading 0.8s linear 0s infinite;
-    -webkit-animation: loading 0.8s linear 0s infinite;
-}
+
 .loading-section .body p {
     margin:15px auto;
     padding:0 10px;
@@ -48,7 +45,7 @@ body {
     line-height:30px;
     margin:0 auto 15px auto;
     padding:0 10px;
-    background-color:#f7d430;
+    background-color:#97d6f5;
     color:#1e1807;
     border-radius:15px;
     text-align:center;
@@ -88,7 +85,7 @@ body {
     width:34%;
     position:absolute;
     left:33%;
-    top:50%;
+    top:80%;
     cursor:pointer;
 }
 
@@ -111,7 +108,7 @@ body {
 }
 .crop-section .crop-layer {
     width:100%;
-    height:100%;
+    height:75.12%;
     position:relative;
     z-index:212;
 }
@@ -168,7 +165,7 @@ body {
     line-height:60px;
     margin-left:-30px;
     border-radius:30px;
-    background-color:#f7d430;
+    background-color:#97d6f5;
     color:#1e1807;
     font-size:16px;
     text-align:center;
@@ -201,6 +198,8 @@ body {
     left:10.5%;
     top:12%;
     border-radius:17px;
+    border: solid;
+    border-color: #26aed6;
 }
 
 .middle-section .sex-tip {
@@ -270,23 +269,25 @@ body {
     width:86.7%;
     position:absolute;
     left:6.9%;
-    top:16.8%;
+    top:19%;
     border-radius:9px;
+    border: solid;
+    border-color: grey;
 }
 
 .result-section .result-title {
-    width: 54%;
+    width: 100%;
     position: absolute;
-    top: 9%;
-    left: 25%;
-    font-size: 28px;
+    top: 11%;
+    font-size: 26px;
+    text-align: center;
 }
 
 .result-section .result-content {
     position: absolute;
-    top: 63%;
-    left: 32%;
-    font-size: 20px;
+    top: 61%;
+    left: 16%;
+    font-size: 16px;
     width: 64%;
 }
 
@@ -319,7 +320,7 @@ body {
     width:34%;
     position:absolute;
     left:33%;
-    bottom: 0%;
+    bottom: 2%;
     cursor:pointer;
     z-index:20;
 }

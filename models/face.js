@@ -1,4 +1,4 @@
-var facepp = require('faceplusplus');
+var facepp = require('../models/facepp.js');
 
 //Start Recoginition
 

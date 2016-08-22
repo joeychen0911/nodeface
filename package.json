@@ -16,6 +16,7 @@
     "express-session" : "latest",
     "mysql" : "latest",
     "formidable" : "latest",
-    "faceplusplus" : "latest"
+    "request" : "latest",
+    "underscore" : "latest"
   }
 }
