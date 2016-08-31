@@ -92,7 +92,7 @@ Data.log = function log(logItem, callback) {
 
 
 Data.getResult = function getResult(gender, age, smiling, race, glass, callback) {
-    var getResult_Sql = ["select tr.id as result_id, tr.result_name, tr.result_desc, tr.web_title, tr.web_content, tr.img_url",
+    var getResult_Sql = ["select tr.id as result_id, tr.result_name, tr.result_desc, tr.web_title, tr.web_content, tr.img_url, tr.brochure_flg, tr.brochure_url, tr.test_drive_flg, tr.test_drive_url",
         "from (select * from",
         "(select output as gender_id from tbl_dict where type = 'gender' and criteria_from = ?) a",
         "join",
